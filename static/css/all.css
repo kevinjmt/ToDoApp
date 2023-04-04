@@ -1,0 +1,55 @@
+.important{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 25px 20% 25px 20%;
+    padding: 25px 0;
+    border-radius: 15px;
+    background-color:  #e6b0aa;
+}
+.unimportant{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 25px 20% 25px 20%;
+    padding: 25px 0;
+    border-radius: 15px;
+    background-color: lightblue;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 25px 20% 25px 20%;
+    padding: 25px 0;
+    border-radius: 15px;
+    justify-content: center;
+    background-color:  #ebf5fb ;
+}
+.combobox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+input,
+textarea{
+    width: auto;
+    transition: 0.5s;
+    border: lightblue solid 2px;
+    border-radius: 5px;
+}
+input:focus,
+textarea:focus{
+    transition: 0.5s;
+    border: lightskyblue solid 2px;
+    background-color:  #ebf5fb ;
+    border-radius: 5px;
+}
+.header{
+    display: flex;
+    flex-direction: row;
+    padding: 15px;
+}

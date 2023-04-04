@@ -1,9 +1,12 @@
-# todolist html
 {% extends 'base.html' %}
 
 {% block content %}
 
-    <h1>FlaskToDo</h1>
+    <div class="header">
+        <img src="{{ url_for('static', filename='icons/ToDoApp.png') }}" style="height:50px; padding-right: 15px" >
+        <h1>ToDoApp</h1>
+    </div>
+
     <h3>{{ utc_dt }}</h3>
     <hr>
     <div class="content">
@@ -46,25 +49,26 @@
         <button type="submit">Create</button>
     </form>
 
-    <label for="combobox">Show elements:</label>
-    <select name="showelements" id="showelements">
-        <option value="all">All</option>
-        <option value="imp">Only Importants</option>
-        <option value="unimp">Only Unimportants</option>
-    </select>
+    <div class="combobox">
+        <label for="combobox">Show elements:</label>
+        <select name="showelements" id="showelements">
+            <option value="all">All</option>
+            <option value="imp">Only Importants</option>
+            <option value="unimp">Only Unimportants</option>
+        </select>
+    </div>
     <hr>
 
 
     {% for todo in todos %}
         {% if todo['degree'] == "Important" %}
         <div class="important">
-            <p><h3>{{ todo['content'] }}</h3> <h4><i>({{ todo['degree']}})</i></h4></p>
+            <p><h3>{{ todo['content'] }}</h3>
+            <a href="{{ url_for('edit', id=todo['_id']) }}">Edit element</a>
+            <h4><i>({{ todo['degree']}})</i></h4></p>
             <h6>{{ todo['date'] }}</h6>
             <h6>{{ todo['description'] }}</h6>
             <h6>{{ todo['phone_number'] }}</h6>
-            <a href="{{ todo['maps'] }}" target="_blank">{{ todo['maps'] }}</a>
-
-            <a href="{{ url_for('edit', id=todo['_id']) }}">Edit element</a>
 
             <form method="POST" action="{{ url_for('delete', id=todo['_id']) }}" >
                 <input type="submit" value="Delete Task"
@@ -75,13 +79,13 @@
         {% else %}
 
         <div class="unimportant">
-            <p><h3>{{ todo['content'] }}</h3> <h4><i>({{ todo['degree']}})</i></h4></p>
+            <p><h3>{{ todo['content'] }}</h3>
+            <a href="{{ url_for('edit', id=todo['_id']) }}">Edit element</a>
+            <h4><i>({{ todo['degree']}})</i></h4></p>
             <h6>{{ todo['date'] }}</h6>
             <h6>{{ todo['description'] }}</h6>
             <h6>{{ todo['phone_number'] }}</h6>
             <a href="{{ todo['maps'] }}" target="_blank">{{ todo['maps'] }}</a>
-
-            <a href="{{ url_for('edit', id=todo['_id']) }}">Edit element</a>
 
             <form method="POST" action="{{ url_for('delete', id=todo['_id']) }}" >
                 <input type="submit" value="Delete Task"
