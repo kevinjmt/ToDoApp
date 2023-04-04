@@ -1,0 +1,173 @@
+# todolist html
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1>FlaskToDo</h1>
+    <h3>{{ utc_dt }}</h3>
+    <hr>
+    <div class="content">
+    <form method="post">
+        <p>
+            <b><label for="content">Todo Content</label></b>
+        </p>
+        <p>
+            <input type="text" name="content"
+                placeholder="Todo Title"></input>
+        </p>
+        <p>
+            <input type="text" name="date"
+                placeholder="Date"></input>
+        </p>
+        <p>
+            <textarea type="text" name="description"
+                placeholder="Description"></textarea>
+        </p>
+        <p>
+            <input type="text" name="phone_number"
+                placeholder="Phone Number"></input>
+        </p>
+        <p>
+            <input type="text" name="maps"
+                placeholder="Maps Location"></input>
+        </p>
+
+        <p>
+            <b><label for="degree">Degree</label></b>
+        </p>
+        <p>
+            <input id="degree-0" name="degree" required type="radio" value="Important">
+            <label for="degree-0">Important</label>
+        </p>
+        <p>
+            <input id="degree-1" name="degree" required type="radio" value="Unimportant">
+            <label for="degree-1">Unimportant</label>
+        </p>
+        <button type="submit">Create</button>
+    </form>
+
+    <label for="combobox">Show elements:</label>
+    <select name="showelements" id="showelements">
+        <option value="all">All</option>
+        <option value="imp">Only Importants</option>
+        <option value="unimp">Only Unimportants</option>
+    </select>
+    <hr>
+
+
+    {% for todo in todos %}
+        {% if todo['degree'] == "Important" %}
+        <div class="important">
+            <p><h3>{{ todo['content'] }}</h3> <h4><i>({{ todo['degree']}})</i></h4></p>
+            <h6>{{ todo['date'] }}</h6>
+            <h6>{{ todo['description'] }}</h6>
+            <h6>{{ todo['phone_number'] }}</h6>
+            <a href="{{ todo['maps'] }}" target="_blank">{{ todo['maps'] }}</a>
+
+            <a href="{{ url_for('edit', id=todo['_id']) }}">Edit element</a>
+
+            <form method="POST" action="{{ url_for('delete', id=todo['_id']) }}" >
+                <input type="submit" value="Delete Task"
+                       onclick="return confirm('Are you sure you want to delete this entry?')">
+            </form>
+        </div>
+
+        {% else %}
+
+        <div class="unimportant">
+            <p><h3>{{ todo['content'] }}</h3> <h4><i>({{ todo['degree']}})</i></h4></p>
+            <h6>{{ todo['date'] }}</h6>
+            <h6>{{ todo['description'] }}</h6>
+            <h6>{{ todo['phone_number'] }}</h6>
+            <a href="{{ todo['maps'] }}" target="_blank">{{ todo['maps'] }}</a>
+
+            <a href="{{ url_for('edit', id=todo['_id']) }}">Edit element</a>
+
+            <form method="POST" action="{{ url_for('delete', id=todo['_id']) }}" >
+                <input type="submit" value="Delete Task"
+                       onclick="return confirm('Are you sure you want to delete this entry?')">
+            </form>
+        </div>
+        {% endif %}
+    {% endfor %}
+
+    </div>
+
+    <script>
+
+    const importants = document.getElementsByClassName("unimportant");
+    const unimportants = document.getElementsByClassName("important");
+
+    combobox = document.getElementById("showelements");
+
+    combobox.addEventListener('click', function(e) {
+        if (combobox.value === 'all'){
+            for (var i = 0;i<importants.length;i++){
+                importants.item(i).style.display = 'block';
+            }
+            for (var i = 0;i<unimportants.length;i++){
+                unimportants.item(i).style.display = 'block';
+            }
+        }
+        if (combobox.value === 'imp'){
+            for (var i = 0;i<importants.length;i++){
+                importants.item(i).style.display = 'none';
+            }
+            for (var i = 0;i<unimportants.length;i++){
+                unimportants.item(i).style.display = 'block';
+            }
+        }
+        if (combobox.value === 'unimp'){
+            for (var i = 0;i<importants.length;i++){
+                importants.item(i).style.display = 'block';
+            }
+            for (var i = 0;i<unimportants.length;i++){
+                unimportants.item(i).style.display = 'none';
+            }
+        }
+        else{
+            console.log("Error when changing filter");
+        }
+    })
+
+
+    editform = document.getElementsByClassName("edition");
+
+
+
+
+    /*
+    while (true){
+        var choice = document.getElementById("showelements").value;
+
+        if (choice == 'all'){
+            for (const item in document.getElementsByClassName("todo-unimportant")) {
+                item.style.visibility = 'block';
+            }
+            for (const item in document.getElementsByClassName("todo-important")) {
+                item.style.visibility = 'block';
+            }
+        }
+        else if (choice == 'imp'){
+            for (const item in document.getElementsByClassName("todo-important")) {
+                item.style.visibility = 'block';
+            }
+            for (const item in document.getElementsByClassName("todo-unimportant")) {
+                item.style.visibility = 'none';
+            }
+        }
+        else{
+            for (const item in document.getElementsByClassName("todo-important")) {
+                item.style.visibility = 'none';
+            }
+            for (const item in document.getElementsByClassName("todo-unimportant")) {
+                item.style.visibility = 'block';
+            }
+        }
+    }
+    */
+
+
+    </script>
+
+{% endblock %}
