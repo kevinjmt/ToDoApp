@@ -70,8 +70,8 @@
             <h6>{{ todo['description'] }}</h6>
             <h6>{{ todo['phone_number'] }}</h6>
 
-            <form method="POST" action="{{ url_for('delete', id=todo['_id']) }}" >
-                <input type="submit" value="Delete Task"
+            <form class="delete" method="POST" action="{{ url_for('delete', id=todo['_id']) }}" >
+                <input class="delete-button" type="submit" value="Delete Task"
                        onclick="return confirm('Are you sure you want to delete this entry?')">
             </form>
         </div>
@@ -87,8 +87,8 @@
             <h6>{{ todo['phone_number'] }}</h6>
             <a href="{{ todo['maps'] }}" target="_blank">{{ todo['maps'] }}</a>
 
-            <form method="POST" action="{{ url_for('delete', id=todo['_id']) }}" >
-                <input type="submit" value="Delete Task"
+            <form class="delete" method="POST" action="{{ url_for('delete', id=todo['_id']) }}" >
+                <input class="delete-button" type="submit" value="Delete Task"
                        onclick="return confirm('Are you sure you want to delete this entry?')">
             </form>
         </div>

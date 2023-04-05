@@ -40,6 +40,8 @@ textarea{
     transition: 0.5s;
     border: lightblue solid 2px;
     border-radius: 5px;
+    text-decoration: none;
+    background: transparent;
 }
 input:focus,
 textarea:focus{
@@ -52,4 +54,18 @@ textarea:focus{
     display: flex;
     flex-direction: row;
     padding: 15px;
+}
+.delete{
+    background: none;
+}
+.delete-button{
+    transition: 0.5s;
+    background: #ffa6a6;
+    border: lightcoral solid 2px;
+    padding: 10px;
+}
+.delete-button:hover{
+    transition: 0.5s;
+    background: orangered;
+    border: darkred solid 2px;
 }
