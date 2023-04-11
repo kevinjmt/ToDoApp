@@ -1,5 +1,8 @@
+
+    <!-- USE TEMPLATE OF BASE.HTML -->
 {% extends 'base.html' %}
 
+    <!-- TEMPLATE FOR TODO LIST PAGE -->
 {% block content %}
 
     <div class="header">
@@ -11,6 +14,7 @@
     <hr>
     <div class="content">
     <form method="post">
+        <!-- INPUTS TO CREATE AN ELEMENT TODO -->
         <p>
             <b><label for="content">Todo Content</label></b>
         </p>
@@ -46,9 +50,11 @@
             <input id="degree-1" name="degree" required type="radio" value="Unimportant">
             <label for="degree-1">Unimportant</label>
         </p>
+        <!-- INPUT TO CONFIRM CREATION -->
         <button type="submit">Create</button>
     </form>
 
+        <!-- COMBOBOX TO FILTER ELEMENTS BY IMPORTANCE (raise an event in the 'script' section) -->
     <div class="combobox">
         <label for="combobox">Show elements:</label>
         <select name="showelements" id="showelements">
@@ -60,7 +66,10 @@
     <hr>
 
 
+        <!-- for loop to display elements (give a class to the item if important or unimportant, used to filters) -->
     {% for todo in todos %}
+
+        <!-- display elements of degree important by giving it a class 'important' -->
         {% if todo['degree'] == "Important" %}
         <div class="important">
             <p><h3>{{ todo['content'] }}</h3>
@@ -76,8 +85,8 @@
             </form>
         </div>
 
+        <!-- display elements of degree unimportant by giving it a class 'unimportant' -->
         {% else %}
-
         <div class="unimportant">
             <p><h3>{{ todo['content'] }}</h3>
             <a href="{{ url_for('edit', id=todo['_id']) }}">Edit element</a>
@@ -99,12 +108,21 @@
 
     <script>
 
+
+    // SCRIPT FOR FILTERING TODOS OBJECTS
+
+    // get important todos using their class
     const importants = document.getElementsByClassName("unimportant");
+
+    // get unimportant todos using their class
     const unimportants = document.getElementsByClassName("important");
 
+    // get combobox to get the filter choice of the user
     combobox = document.getElementById("showelements");
 
+    // if there is an event raised :
     combobox.addEventListener('click', function(e) {
+        // if the user selected all -> show all elements as a block
         if (combobox.value === 'all'){
             for (var i = 0;i<importants.length;i++){
                 importants.item(i).style.display = 'block';
@@ -113,6 +131,7 @@
                 unimportants.item(i).style.display = 'block';
             }
         }
+        // if the user selected imp -> show important elements as a block
         if (combobox.value === 'imp'){
             for (var i = 0;i<importants.length;i++){
                 importants.item(i).style.display = 'none';
@@ -121,6 +140,7 @@
                 unimportants.item(i).style.display = 'block';
             }
         }
+        // if the user selected unimp -> show unimportants elements as a block
         if (combobox.value === 'unimp'){
             for (var i = 0;i<importants.length;i++){
                 importants.item(i).style.display = 'block';

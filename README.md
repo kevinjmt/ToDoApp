@@ -3,6 +3,11 @@ A very simple, clean and quick ToDoApp
 ___
 This project is a MongoDB and Flask App for my CA4 Back-End Course.
 Very simple, clean, quick to use it as a personal ToDo App !
+
+The aim of this project is to do an App link to a MongoDB Database. 
+This very simple app includes a login and register feature, to link with different accounts. 
+Also added many key features really useful for a daily use. Enjoy !
+
 ---
 ![alt text](./static/imgs/ToDoApp.png)
 ---

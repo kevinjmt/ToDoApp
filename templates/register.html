@@ -1,4 +1,7 @@
+
+    <!-- USE TEMPLATE OF BASE.HTML -->
 {% extends "base.html" %}
+    <!-- TEMPLATE FOR REGISTER PAGE -->
 {% block title %}Register System{% endblock %}
 
 {% block content %}
@@ -9,7 +12,9 @@
     </div>
 {% endif %}
 
+        <!-- FORM TO REGISTER USER -->
 <form action="" method="post">
+        <!-- INPUTS OF FIELDS -->
     <div class="form-group">
         <label for="Fullname">Full name</label>
         <input name="fullname" class="form-control" id="inputFullName" aria-describedby="emailHelp" placeholder="Enter full name">

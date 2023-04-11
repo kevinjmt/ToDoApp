@@ -1,4 +1,7 @@
+
+    <!-- USE TEMPLATE OF BASE.HTML -->
 {% extends "base.html" %}
+    <!-- TEMPLATE FOR LOGIN PAGE -->
 {% block title %}Login System{% endblock %}
 
 {% block content %}
@@ -10,6 +13,7 @@
 {% endif %}
 
 <form action="" method="post">
+        <!-- FORM TO LOG IN USER -->
   <div class="form-group">
       <label for="InputEmail">Email address</label>
       <input name="email" class="form-control" id="InputEmail"  placeholder="Enter email">

@@ -1,5 +1,8 @@
+
+    <!-- USE TEMPLATE OF BASE.HTML -->
 {% extends "base.html" %}
 
+    <!-- TEMPLATE FOR EDIT PAGE -->
 {% block title %}Editting Item{% endblock %}
     <h3>Edit item</h3>
 
@@ -7,6 +10,7 @@
 
     <form method="POST">
     <div class="edition">
+        <!-- INPUTS FOR ELEMENT TODO (sent by the todolist view) -->
         <p>
             <input type="text" name="content"
                 placeholder="Todo Title" value="{{ todo['content'] }}"></input>
@@ -37,10 +41,13 @@
         </p>
         <button type="submit">Apply Modifications</button>
     </div>
+
+        <!-- INPUT TO SAVE THE ITEM -->
     <input type="submit" value="Edit Task">
     </form>
 
 {% if message  %}
+        <!-- display message if an error message has been raised -->
     <div class="alert alert-secondary" role="alert">
         <p>{{ message }}</p>
     </div>
