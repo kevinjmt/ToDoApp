@@ -23,5 +23,11 @@ Also added many key features really useful for a daily use. Enjoy !
 
 ---
 # 🧪 Tests
+> ✅ **Tested**
+> 
+> ❌ **Not tested**
 
-- ❌ nothing has been tested 
+- ✅ Tested **views and access to pages** with a logged in/out user
+- ✅ **Login and Register** users
+- ✅ **Todos access, create-ability, edit-ability and filters**
+- ❌ **Wrong user IDs** to log in 
